@@ -23,5 +23,10 @@
         "name": "brownie",
         "description": "chocolate",
         "price": 2.99
+    },
+    {
+        "name": "Sambusa",
+        "description": "Veg sambusa",
+        "price": 2.99
     }
 ]

@@ -33,5 +33,10 @@
         "title": "Twilight",
         "year_published": "2004",
         "price": 6.99
+    },
+    {
+        "title": "Enebla: Recipes from an Ethiopian Kitchen",
+        "year_published": "2022",
+        "price": 22.36
     }
 ]

@@ -1,6 +1,5 @@
 import json
 
-
 # The save_data() function writes contents of food_menu & book_menu variables to JSON files:
 def save_data():
     with open('food_menu.json', 'w') as file:
