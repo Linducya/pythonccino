@@ -1,21 +1,34 @@
+# from flask import Flask, render_template
+import os
 import json
 
-# The save_data() function writes contents of food_menu & book_menu variables to JSON files:
-def save_data():
-    with open('food_menu.json', 'w') as file:
-        json.dump(food_menu, file, indent=4)
-    with open('book_menu.json', 'w') as file:
-        json.dump(book_menu, file, indent=4)
+# app = Flask(__name__)
 
+# Define base directory where JSON files are stored
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# print(BASE_DIR)
+DATA_DIR = os.path.join(BASE_DIR, 'data')
+print(DATA_DIR)
+
+# Construct the full path to the JSON files
+food_menu_path = os.path.join(DATA_DIR, 'food_menu.json')
+book_menu_path = os.path.join(DATA_DIR, 'book_menu.json')
+
+# Function save_data writes contents of food_menu & book_menu variables to JSON files:
+def save_data():
+    with open(food_menu_path, 'w') as file:
+        json.dump(food_menu, file, indent=4)
+    with open(book_menu_path, 'w') as file:
+        json.dump(book_menu, file, indent=4)
 
 # Load JSON data - uses json.load() method
 try:
     # Load food menu with json.load(file) method
-    with open('food_menu.json', 'r') as file:
+    with open(food_menu_path, 'r') as file:
         food_menu = json.load(file)
 
     # Load book menu
-    with open('book_menu.json', 'r') as file:
+    with open(book_menu_path, 'r') as file:
         book_menu = json.load(file)
     
 except FileNotFoundError as e:
