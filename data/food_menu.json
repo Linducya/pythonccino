@@ -20,13 +20,13 @@
         "description": "Mixed greens with dressing"
     },
     {
-        "name": "Fruit",
-        "description": "Orange",
-        "price": 0.89
-    },
-    {
         "name": "Brownie",
         "description": "Chocolate",
         "price": 2.99
+    },
+    {
+        "name": "Fruit",
+        "description": "Banana",
+        "price": 0.56
     }
 ]

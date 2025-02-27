@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Import home() function from routes.py and print the return value
 from app.routes import home
 

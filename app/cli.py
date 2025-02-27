@@ -15,19 +15,8 @@ def display_menu_and_books():
 
 # Function to calculate total basket value based on selected items
 def calculate_total(basket):
-    # total = 0
-    # for food in food_menu:
-    #     total += food['price']
-    # for book in book_menu:
-    #     total += book['price']
-    # return total
-    # total_food = sum([food['price'] for food in food_menu])
-    # total_book = sum([book['price'] for book in book_menu])
-    # total_basket = total_food + total_book
     total_basket = sum([item['price'] for item in basket])
-    # print(f"Total food value: ${total_food}")
-    # print(f"Total book value: ${total_book}")
-    print(f"Total basket value: £{total_basket}")
+    print(f"Total basket value: £{total_basket:.2f}")
     return total_basket 
 
 # Main function to run the application
@@ -35,10 +24,9 @@ def main():
     while True:  
         # Prompt the user to choose an option
         print("\nPlease choose an option:")
-        print("\n1. Customer\n2. Employee\n3. Exit")
-        # print("1. Customer")
-        # print("2. Employee")
-        # print("3. Exit")
+        print("1. Customer")
+        print("2. Employee")
+        print("3. Exit")
         option = input("Enter choice: ")
 
         if option == "1":
@@ -49,8 +37,7 @@ def main():
             # Customer chooses items
             basket = []
             while True:
-                # display_menu_and_books()
-                choice = input("\nEnter the number of the item you want to add to your basket. To finish ordering enter done: ")
+                choice = input("\nEnter the number of the item you want to add to your basket. To finish ordering enter 'done': ")
                 if choice.lower() == 'done':
                     break
                 
@@ -70,16 +57,15 @@ def main():
                     else:
                         print("Invalid choice. Please enter a valid number.")
                 else:
-                    print("Invalid input. Please enter a number.")
+                    print("Invalid input. Please enter a number or enter 'done' to finish ordering.")
 
             # Display customer's order
             print("\nYour basket contains:")
             for item in basket:
-                print(f"- {item['name'] if 'name' in item else item['title']} (${item['price']})")
+                print(f"- {item['name'] if 'name' in item else item['title']} (£{item['price']})")
 
             # Calculate total basket value
-            total_basket_value = calculate_total(basket)
-            # print(f"\nYour total basket value is: £{total_basket_value}")
+            calculate_total(basket)
 
         elif option == "2":
             # Employee flow
@@ -101,7 +87,7 @@ def main():
                     name = input("Enter the name of the food item: ")
                     description = input("Enter the description: ")
                     price = float(input("Enter the price: "))
-                    new_food = {"name": name, "description": description, "price": float(price)}
+                    new_food = {"name": name, "description": description, "price": price}
                     food_menu.append(new_food)
                     save_data(food_menu, book_menu)
                     print(f"Food item '{name}' added successfully!")
@@ -110,8 +96,8 @@ def main():
                     # Add a book item
                     title = input("Enter the title of the book: ")
                     year_published = input("Enter the year published: ")
-                    price = input("Enter the price: ")
-                    new_book = {"title": title, "year_published": year_published, "price": float(price)}
+                    price = float(input("Enter the price: "))
+                    new_book = {"title": title, "year_published": year_published, "price": price}
                     book_menu.append(new_book)
                     save_data(food_menu, book_menu)
                     print(f"Book '{title}' added successfully!")
@@ -121,38 +107,36 @@ def main():
                     display_menu_and_books()
                     food_choice = input("\nEnter the number of the food item to delete: ")
                     if food_choice.isdigit() and 1 <= int(food_choice) <= len(food_menu):
-                      removed_food = food_menu.pop(int(food_choice) - 1)
-                      save_data(food_menu, book_menu)
-                      print(f"Food item '{removed_food['name']}' deleted successfully!")
+                        removed_food = food_menu.pop(int(food_choice) - 1)
+                        save_data(food_menu, book_menu)
+                        print(f"Food item '{removed_food['name']}' deleted successfully!")
                     else:
-                      print("Invalid choice.")
+                        print("Invalid choice.")
 
                 elif emp_option == "5":
-                  # Delete a book item
-                  display_menu_and_books()
-                  book_choice = input("\nEnter the number of the book item to delete: ")
-                  if book_choice.isdigit() and len(food_menu) < int(book_choice) <= len(food_menu) + len(book_menu):
-                    removed_book = book_menu.pop(int(book_choice) - len(food_menu) - 1)
-                    save_data(food_menu, book_menu)
-                    print(f"Book '{removed_book['title']}' deleted successfully!")
-                  else:
-                    print("Invalid choice.")
+                    # Delete a book item
+                    display_menu_and_books()
+                    book_choice = input("\nEnter the number of the book item to delete: ")
+                    if book_choice.isdigit() and len(food_menu) < int(book_choice) <= len(food_menu) + len(book_menu):
+                        removed_book = book_menu.pop(int(book_choice) - len(food_menu) - 1)
+                        save_data(food_menu, book_menu)
+                        print(f"Book '{removed_book['title']}' deleted successfully!")
+                    else:
+                        print("Invalid choice.")
 
                 elif emp_option == "6":
-                  break
+                    break
 
                 else:
-                  print("Invalid option. Please try again.")
+                    print("Invalid option. Please try again.")
 
         elif option == "3":
             # Exit the application
-            print("Thank you for visiting Pythonccino Coffee & Book Cafe! Goodbye!")
+            print("\nThank you for visiting Pythonccino Coffee & Book Cafe! Goodbye!\n")
             break
         else:
-          print("Invalid option. Please try again.")
+            print("Invalid option. Please try again.")
 
 # Ensure `cli.py` only runs when executed directly
 if __name__ == "__main__":
     main()
-
-# CLI-Based Menu Managemen
