@@ -29,8 +29,6 @@ python cli_run.py
 ## Roadmap
 - [ ] Refactor code for modularity
 - [ ] Add unit tests
-- [ ] Integrate MySQL database
-- [ ] Deploy to Azure
 
 ## Contributing
 Contributions are welcome! Feel free to fork the repository and submit a pull request.
