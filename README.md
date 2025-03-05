@@ -6,7 +6,6 @@ A command-line book café application built with Python, designed to display boo
 - Browse book and food menus via the command-line interface
 - Modular code structure
 - JSON-based data storage
-- Future plans to integrate MySQL and Azure storage
 
 ## Tech Stack
 - Python
